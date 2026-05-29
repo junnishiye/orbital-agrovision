@@ -5,7 +5,7 @@
 ## Integrantes
 
 * João Vitor Jun Nishiye De Sousa — RM: 572079
-* Nome do integrante 2 — RM: insira RM aqui
+* Davi Sinhorini Pacheco - RM 569487
 
 ## Objetivo
 

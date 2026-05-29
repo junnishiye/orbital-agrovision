@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Global Solution 2026.1
 Disciplina: Pensamento Computacional e Automação com Python
 
@@ -13,3 +14,20 @@ https://github.com/junnishiye/orbital-agrovision
 
 Link do vídeo pitch:
 insira link aqui
+=======
+Global Solution 2026.1
+Disciplina: Pensamento Computacional e Automação com Python
+
+Projeto:
+Orbital AgroVision — Mission TerraGuard
+
+Integrantes:
+- João Vitor Jun Nishiye De Sousa — RM: 572079
+- Davi Sinhorini Pacheco — RM: 569487
+
+Link do repositório GitHub:
+https://github.com/junnishiye/orbital-agrovision
+
+Link do vídeo pitch:
+insira link aqui
+>>>>>>> 8833236 (Finaliza entrega de Data Structures)

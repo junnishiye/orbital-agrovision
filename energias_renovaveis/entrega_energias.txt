@@ -1,0 +1,18 @@
+Global Solution 2026.1
+Disciplina: Soluções em Energias Renováveis e Sustentáveis
+
+Projeto:
+Orbital AgroVision — Mission TerraGuard
+
+Descrição:
+Sistema de monitoramento energético para uma missão espacial experimental, com análise de bateria, luminosidade, potência solar simulada, consumo estimado, saldo energético, alertas automáticos e decisões de economia de energia.
+
+Integrantes:
+- João Vitor Jun Nishiye De Sousa — RM: 572079
+- Davi Sinhorini Pacheco — RM: 569487
+
+Link do repositório GitHub:
+https://github.com/junnishiye/orbital-agrovision
+
+Link do vídeo no YouTube:
+insira link aqui

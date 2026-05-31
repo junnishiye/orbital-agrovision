@@ -6,7 +6,7 @@
 
 Este arquivo apresenta as evidências de execução do sistema de monitoramento desenvolvido para a disciplina de **Data Structures and Algorithms**.
 
-A demonstração mostra o funcionamento do menu interativo, cadastro de leituras, visualização dos dados, análise automática e histórico de alertas.
+A demonstração mostra o funcionamento do menu interativo, cadastro de leituras, simulação automática, visualização dos dados, análise automática, histórico de alertas e relatório resumido.
 
 ---
 
@@ -18,23 +18,31 @@ O sistema inicia exibindo um menu com as opções disponíveis para o usuário.
 
 ---
 
-## 2. Inserção de nova leitura
+## 2. Simulação automática de leitura
 
-Nesta etapa, o usuário insere uma nova leitura da missão, informando temperatura, nível de energia e status da comunicação.
+Nesta etapa, o sistema gera automaticamente uma nova leitura simulada da missão.
 
-![Inserção de nova leitura](../assets/prints/data_inserir_leitura.png)
+![Simulação automática](../assets/prints/data_simulacao.png)
 
 ---
 
-## 3. Visualização das leituras cadastradas
+## 3. Inserção manual de nova leitura
 
-O sistema exibe todas as leituras armazenadas na lista `leituras`, incluindo temperatura, energia, comunicação e status operacional.
+Nesta etapa, o usuário insere manualmente uma nova leitura da missão, informando temperatura, nível de energia e status da comunicação.
+
+![Inserção manual de leitura](../assets/prints/data_inserir_leitura.png)
+
+---
+
+## 4. Visualização das leituras cadastradas
+
+O sistema exibe todas as leituras armazenadas na lista `leituras`, incluindo ciclo, temperatura, energia, comunicação, pontuação de risco e status operacional.
 
 ![Visualização das leituras](../assets/prints/data_visualizar_leituras.png)
 
 ---
 
-## 4. Análise automática das leituras
+## 5. Análise automática das leituras
 
 O sistema percorre as leituras cadastradas e aplica as regras de verificação automática:
 
@@ -46,11 +54,19 @@ O sistema percorre as leituras cadastradas e aplica as regras de verificação a
 
 ---
 
-## 5. Histórico de alertas
+## 6. Histórico de alertas
 
-O histórico apresenta as leituras que geraram alertas durante a execução do sistema.
+O sistema apresenta apenas os ciclos que registraram alertas reais, facilitando a identificação de situações críticas.
 
-![Histórico de alertas](../assets/prints/data_historico.png)
+![Histórico de alertas](../assets/prints/data_alertas.png)
+
+---
+
+## 7. Relatório resumido
+
+O sistema gera um resumo geral da missão, mostrando total de leituras, quantidade de estados estáveis, em atenção e críticos, além do ciclo mais crítico.
+
+![Relatório resumido](../assets/prints/data_relatorio.png)
 
 ---
 
@@ -59,8 +75,10 @@ O histórico apresenta as leituras que geraram alertas durante a execução do s
 A demonstração comprova que o sistema executa corretamente as principais funcionalidades exigidas:
 
 - Menu interativo;
-- Cadastro de dados;
+- Inserção manual de dados;
+- Simulação automática de leituras;
 - Visualização das leituras;
 - Análise automática;
 - Histórico de alertas;
+- Relatório resumido;
 - Uso de listas, funções, condicionais e repetição.

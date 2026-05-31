@@ -1,6 +1,10 @@
 # Orbital AgroVision — Mission TerraGuard
 # Data Structures and Algorithms
-# Sistema de monitoramento de missão espacial experimental
+# Sistema com interface gráfica para monitoramento de missão espacial
+
+import tkinter as tk
+from tkinter import ttk, messagebox
+
 
 leituras = [
     {
@@ -16,8 +20,8 @@ leituras = [
         "temperatura": 38,
         "energia": 42,
         "comunicacao": 1,
-        "status": "ATENÇÃO",
-        "pontuacao": 1
+        "status": "ESTÁVEL",
+        "pontuacao": 0
     },
     {
         "ciclo": 3,
@@ -28,20 +32,6 @@ leituras = [
         "pontuacao": 6
     }
 ]
-
-
-def exibir_menu():
-    print("\n" + "=" * 60)
-    print("ORBITAL AGROVISION — DATA STRUCTURES")
-    print("Mission TerraGuard — Monitoramento Operacional")
-    print("=" * 60)
-    print("1 - Inserir nova leitura manual")
-    print("2 - Simular leitura automática")
-    print("3 - Visualizar leituras cadastradas")
-    print("4 - Executar análise das leituras")
-    print("5 - Ver histórico de alertas")
-    print("6 - Gerar relatório resumido")
-    print("7 - Encerrar sistema")
 
 
 def calcular_pontuacao(temperatura, energia, comunicacao):
@@ -91,7 +81,7 @@ def criar_leitura(temperatura, energia, comunicacao):
     pontuacao = calcular_pontuacao(temperatura, energia, comunicacao)
     status = classificar_status(pontuacao)
 
-    leitura = {
+    return {
         "ciclo": ciclo,
         "temperatura": temperatura,
         "energia": energia,
@@ -100,37 +90,35 @@ def criar_leitura(temperatura, energia, comunicacao):
         "pontuacao": pontuacao
     }
 
-    return leitura
-
 
 def inserir_leitura_manual():
-    print("\nINSERIR NOVA LEITURA MANUAL")
-    print("-" * 60)
-
     try:
-        temperatura = float(input("Temperatura da missão: "))
-        energia = float(input("Nível de energia (%): "))
-        comunicacao = int(input("Comunicação (1 = ativa / 0 = falha): "))
+        temperatura = float(entrada_temperatura.get())
+        energia = float(entrada_energia.get())
+        comunicacao = int(combo_comunicacao.get())
 
         if comunicacao not in [0, 1]:
-            print("Valor inválido para comunicação. Use 1 para ativa ou 0 para falha.")
+            messagebox.showerror("Erro", "Comunicação deve ser 1 ou 0.")
             return
 
         leitura = criar_leitura(temperatura, energia, comunicacao)
         leituras.append(leitura)
 
-        print("Leitura cadastrada com sucesso.")
-        print(f"Status calculado: {leitura['status']}")
-        print(f"Pontuação de risco: {leitura['pontuacao']}")
+        atualizar_tabela()
+        limpar_campos()
+
+        messagebox.showinfo(
+            "Leitura cadastrada",
+            f"Leitura adicionada com sucesso.\n"
+            f"Status: {leitura['status']}\n"
+            f"Pontuação: {leitura['pontuacao']}"
+        )
 
     except ValueError:
-        print("Erro: digite apenas valores numéricos.")
+        messagebox.showerror("Erro", "Digite valores numéricos válidos.")
 
 
 def simular_leitura_automatica():
-    print("\nSIMULAÇÃO AUTOMÁTICA DE SENSOR")
-    print("-" * 60)
-
     cenarios_simulados = [
         [29, 76, 1],
         [45, 35, 1],
@@ -146,83 +134,90 @@ def simular_leitura_automatica():
     leitura = criar_leitura(temperatura, energia, comunicacao)
     leituras.append(leitura)
 
-    print("Leitura automática simulada com sucesso.")
-    print(f"Ciclo: {leitura['ciclo']}")
-    print(f"Temperatura: {temperatura} °C")
-    print(f"Energia: {energia}%")
-    print(f"Comunicação: {comunicacao}")
-    print(f"Status: {leitura['status']}")
-    print(f"Pontuação de risco: {leitura['pontuacao']}")
+    atualizar_tabela()
+
+    messagebox.showinfo(
+        "Simulação automática",
+        f"Leitura simulada adicionada.\n"
+        f"Ciclo: {leitura['ciclo']}\n"
+        f"Temperatura: {temperatura} °C\n"
+        f"Energia: {energia}%\n"
+        f"Comunicação: {comunicacao}\n"
+        f"Status: {leitura['status']}"
+    )
 
 
-def visualizar_leituras():
-    print("\nLEITURAS CADASTRADAS")
-    print("-" * 60)
-
-    if not leituras:
-        print("Nenhuma leitura cadastrada.")
-        return
+def atualizar_tabela():
+    for item in tabela.get_children():
+        tabela.delete(item)
 
     for leitura in leituras:
-        print(f"Ciclo {leitura['ciclo']}")
-        print(f"Temperatura: {leitura['temperatura']} °C")
-        print(f"Energia: {leitura['energia']}%")
-        print(f"Comunicação: {leitura['comunicacao']}")
-        print(f"Pontuação de risco: {leitura['pontuacao']}")
-        print(f"Status: {leitura['status']}")
-        print("-" * 60)
+        tabela.insert(
+            "",
+            "end",
+            values=(
+                leitura["ciclo"],
+                leitura["temperatura"],
+                leitura["energia"],
+                leitura["comunicacao"],
+                leitura["pontuacao"],
+                leitura["status"]
+            )
+        )
 
 
 def executar_analise():
-    print("\nANÁLISE DAS LEITURAS")
-    print("-" * 60)
-
-    if not leituras:
-        print("Nenhuma leitura disponível para análise.")
-        return
+    saida_texto.delete("1.0", tk.END)
+    saida_texto.insert(tk.END, "ANÁLISE DAS LEITURAS\n")
+    saida_texto.insert(tk.END, "-" * 60 + "\n")
 
     for leitura in leituras:
         alertas = analisar_leitura(leitura)
 
-        print(f"Ciclo {leitura['ciclo']}")
-        print(f"Status: {leitura['status']}")
-        print(f"Pontuação de risco: {leitura['pontuacao']}")
-        print("Alertas:")
+        saida_texto.insert(tk.END, f"Ciclo {leitura['ciclo']}\n")
+        saida_texto.insert(tk.END, f"Status: {leitura['status']}\n")
+        saida_texto.insert(tk.END, f"Pontuação de risco: {leitura['pontuacao']}\n")
+        saida_texto.insert(tk.END, "Alertas:\n")
 
         for alerta in alertas:
-            print(f"- {alerta}")
+            saida_texto.insert(tk.END, f"- {alerta}\n")
 
-        print("-" * 60)
+        saida_texto.insert(tk.END, "-" * 60 + "\n")
 
 
 def ver_historico_alertas():
-    print("\nHISTÓRICO DE ALERTAS")
-    print("-" * 60)
+    saida_texto.delete("1.0", tk.END)
+    saida_texto.insert(tk.END, "HISTÓRICO DE ALERTAS\n")
+    saida_texto.insert(tk.END, "-" * 60 + "\n")
 
     encontrou_alerta = False
 
     for leitura in leituras:
         alertas = analisar_leitura(leitura)
-        alertas_reais = []
 
-        for alerta in alertas:
-            if alerta != "Nenhum alerta. Operação estável.":
-                alertas_reais.append(alerta)
+        alertas_reais = [
+            alerta for alerta in alertas
+            if alerta != "Nenhum alerta. Operação estável."
+        ]
 
         if alertas_reais:
             encontrou_alerta = True
-            print(f"Ciclo {leitura['ciclo']} — {leitura['status']}")
+            saida_texto.insert(
+                tk.END,
+                f"Ciclo {leitura['ciclo']} — {leitura['status']}\n"
+            )
+
             for alerta in alertas_reais:
-                print(f"- {alerta}")
-            print("-" * 60)
+                saida_texto.insert(tk.END, f"- {alerta}\n")
+
+            saida_texto.insert(tk.END, "-" * 60 + "\n")
 
     if not encontrou_alerta:
-        print("Nenhum alerta crítico registrado.")
+        saida_texto.insert(tk.END, "Nenhum alerta crítico registrado.\n")
 
 
 def gerar_relatorio_resumido():
-    print("\nRELATÓRIO RESUMIDO DA MISSÃO")
-    print("-" * 60)
+    saida_texto.delete("1.0", tk.END)
 
     total_leituras = len(leituras)
     total_estaveis = 0
@@ -242,44 +237,120 @@ def gerar_relatorio_resumido():
         if leitura["pontuacao"] > ciclo_mais_critico["pontuacao"]:
             ciclo_mais_critico = leitura
 
-    print(f"Total de leituras: {total_leituras}")
-    print(f"Leituras estáveis: {total_estaveis}")
-    print(f"Leituras em atenção: {total_atencao}")
-    print(f"Leituras críticas: {total_criticos}")
-    print(f"Ciclo mais crítico: {ciclo_mais_critico['ciclo']}")
-    print(f"Maior pontuação de risco: {ciclo_mais_critico['pontuacao']}")
+    saida_texto.insert(tk.END, "RELATÓRIO RESUMIDO DA MISSÃO\n")
+    saida_texto.insert(tk.END, "-" * 60 + "\n")
+    saida_texto.insert(tk.END, f"Total de leituras: {total_leituras}\n")
+    saida_texto.insert(tk.END, f"Leituras estáveis: {total_estaveis}\n")
+    saida_texto.insert(tk.END, f"Leituras em atenção: {total_atencao}\n")
+    saida_texto.insert(tk.END, f"Leituras críticas: {total_criticos}\n")
+    saida_texto.insert(tk.END, f"Ciclo mais crítico: {ciclo_mais_critico['ciclo']}\n")
+    saida_texto.insert(tk.END, f"Maior pontuação de risco: {ciclo_mais_critico['pontuacao']}\n")
 
     if total_criticos > 0:
-        print("Conclusão: a missão apresentou eventos críticos e exige ação imediata.")
+        conclusao = "A missão apresentou eventos críticos e exige ação imediata."
     elif total_atencao > 0:
-        print("Conclusão: a missão exige acompanhamento preventivo.")
+        conclusao = "A missão exige acompanhamento preventivo."
     else:
-        print("Conclusão: a missão está operando de forma estável.")
+        conclusao = "A missão está operando de forma estável."
+
+    saida_texto.insert(tk.END, f"Conclusão: {conclusao}\n")
 
 
-def main():
-    while True:
-        exibir_menu()
-        opcao = input("Escolha uma opção: ")
-
-        if opcao == "1":
-            inserir_leitura_manual()
-        elif opcao == "2":
-            simular_leitura_automatica()
-        elif opcao == "3":
-            visualizar_leituras()
-        elif opcao == "4":
-            executar_analise()
-        elif opcao == "5":
-            ver_historico_alertas()
-        elif opcao == "6":
-            gerar_relatorio_resumido()
-        elif opcao == "7":
-            print("Sistema encerrado.")
-            break
-        else:
-            print("Opção inválida. Tente novamente.")
+def limpar_campos():
+    entrada_temperatura.delete(0, tk.END)
+    entrada_energia.delete(0, tk.END)
+    combo_comunicacao.set("1")
 
 
-if __name__ == "__main__":
-    main()
+def encerrar_sistema():
+    janela.destroy()
+
+
+janela = tk.Tk()
+janela.title("Orbital AgroVision — Data Structures")
+janela.geometry("950x650")
+
+titulo = tk.Label(
+    janela,
+    text="Orbital AgroVision — Mission TerraGuard",
+    font=("Arial", 18, "bold")
+)
+titulo.pack(pady=10)
+
+subtitulo = tk.Label(
+    janela,
+    text="Sistema de Monitoramento Operacional — Data Structures and Algorithms",
+    font=("Arial", 11)
+)
+subtitulo.pack(pady=5)
+
+frame_entrada = tk.LabelFrame(janela, text="Cadastro de leitura", padx=10, pady=10)
+frame_entrada.pack(fill="x", padx=15, pady=10)
+
+tk.Label(frame_entrada, text="Temperatura:").grid(row=0, column=0, padx=5, pady=5)
+entrada_temperatura = tk.Entry(frame_entrada, width=15)
+entrada_temperatura.grid(row=0, column=1, padx=5, pady=5)
+
+tk.Label(frame_entrada, text="Energia (%):").grid(row=0, column=2, padx=5, pady=5)
+entrada_energia = tk.Entry(frame_entrada, width=15)
+entrada_energia.grid(row=0, column=3, padx=5, pady=5)
+
+tk.Label(frame_entrada, text="Comunicação:").grid(row=0, column=4, padx=5, pady=5)
+combo_comunicacao = ttk.Combobox(frame_entrada, values=[1, 0], width=12)
+combo_comunicacao.set("1")
+combo_comunicacao.grid(row=0, column=5, padx=5, pady=5)
+
+botao_inserir = tk.Button(
+    frame_entrada,
+    text="Inserir leitura manual",
+    command=inserir_leitura_manual
+)
+botao_inserir.grid(row=0, column=6, padx=5, pady=5)
+
+botao_simular = tk.Button(
+    frame_entrada,
+    text="Simular leitura automática",
+    command=simular_leitura_automatica
+)
+botao_simular.grid(row=0, column=7, padx=5, pady=5)
+
+frame_tabela = tk.LabelFrame(janela, text="Leituras cadastradas", padx=10, pady=10)
+frame_tabela.pack(fill="both", expand=True, padx=15, pady=10)
+
+colunas = ("ciclo", "temperatura", "energia", "comunicacao", "pontuacao", "status")
+
+tabela = ttk.Treeview(frame_tabela, columns=colunas, show="headings", height=8)
+
+tabela.heading("ciclo", text="Ciclo")
+tabela.heading("temperatura", text="Temperatura")
+tabela.heading("energia", text="Energia")
+tabela.heading("comunicacao", text="Comunicação")
+tabela.heading("pontuacao", text="Pontuação")
+tabela.heading("status", text="Status")
+
+tabela.column("ciclo", width=80)
+tabela.column("temperatura", width=120)
+tabela.column("energia", width=100)
+tabela.column("comunicacao", width=120)
+tabela.column("pontuacao", width=100)
+tabela.column("status", width=120)
+
+tabela.pack(fill="both", expand=True)
+
+frame_botoes = tk.Frame(janela)
+frame_botoes.pack(fill="x", padx=15, pady=5)
+
+tk.Button(frame_botoes, text="Executar análise", command=executar_analise).pack(side="left", padx=5)
+tk.Button(frame_botoes, text="Histórico de alertas", command=ver_historico_alertas).pack(side="left", padx=5)
+tk.Button(frame_botoes, text="Gerar relatório", command=gerar_relatorio_resumido).pack(side="left", padx=5)
+tk.Button(frame_botoes, text="Encerrar", command=encerrar_sistema).pack(side="right", padx=5)
+
+frame_saida = tk.LabelFrame(janela, text="Saída do sistema", padx=10, pady=10)
+frame_saida.pack(fill="both", expand=True, padx=15, pady=10)
+
+saida_texto = tk.Text(frame_saida, height=10)
+saida_texto.pack(fill="both", expand=True)
+
+atualizar_tabela()
+
+janela.mainloop()

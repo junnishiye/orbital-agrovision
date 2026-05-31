@@ -6,27 +6,19 @@
 
 Este arquivo apresenta as evidências de execução do sistema de monitoramento desenvolvido para a disciplina de **Data Structures and Algorithms**.
 
-A demonstração mostra o funcionamento do menu interativo, cadastro de leituras, simulação automática, visualização dos dados, análise automática, histórico de alertas e relatório resumido.
+A demonstração mostra o funcionamento da interface gráfica, cadastro de leituras, simulação automática, análise das leituras, histórico de alertas e relatório resumido.
 
 ---
 
-## 1. Menu principal
+## 1. Interface inicial
 
-O sistema inicia exibindo um menu com as opções disponíveis para o usuário.
+O sistema inicia exibindo uma interface gráfica com campos de entrada, botões de ação, tabela de leituras e área de saída do sistema.
 
-![Menu principal](../assets/prints/data_menu.png)
-
----
-
-## 2. Simulação automática de leitura
-
-Nesta etapa, o sistema gera automaticamente uma nova leitura simulada da missão.
-
-![Simulação automática](../assets/prints/data_simulacao.png)
+![Interface inicial](../assets/prints/data_interface_inicial.png)
 
 ---
 
-## 3. Inserção manual de nova leitura
+## 2. Inserção manual de nova leitura
 
 Nesta etapa, o usuário insere manualmente uma nova leitura da missão, informando temperatura, nível de energia e status da comunicação.
 
@@ -34,15 +26,15 @@ Nesta etapa, o usuário insere manualmente uma nova leitura da missão, informan
 
 ---
 
-## 4. Visualização das leituras cadastradas
+## 3. Simulação automática de leitura
 
-O sistema exibe todas as leituras armazenadas na lista `leituras`, incluindo ciclo, temperatura, energia, comunicação, pontuação de risco e status operacional.
+Nesta etapa, o sistema gera automaticamente uma nova leitura simulada da missão.
 
-![Visualização das leituras](../assets/prints/data_visualizar_leituras.png)
+![Simulação automática](../assets/prints/data_simulacao.png)
 
 ---
 
-## 5. Análise automática das leituras
+## 4. Análise automática das leituras
 
 O sistema percorre as leituras cadastradas e aplica as regras de verificação automática:
 
@@ -54,7 +46,7 @@ O sistema percorre as leituras cadastradas e aplica as regras de verificação a
 
 ---
 
-## 6. Histórico de alertas
+## 5. Histórico de alertas
 
 O sistema apresenta apenas os ciclos que registraram alertas reais, facilitando a identificação de situações críticas.
 
@@ -62,7 +54,7 @@ O sistema apresenta apenas os ciclos que registraram alertas reais, facilitando 
 
 ---
 
-## 7. Relatório resumido
+## 6. Relatório resumido
 
 O sistema gera um resumo geral da missão, mostrando total de leituras, quantidade de estados estáveis, em atenção e críticos, além do ciclo mais crítico.
 
@@ -74,11 +66,11 @@ O sistema gera um resumo geral da missão, mostrando total de leituras, quantida
 
 A demonstração comprova que o sistema executa corretamente as principais funcionalidades exigidas:
 
-- Menu interativo;
+- Interface gráfica;
 - Inserção manual de dados;
 - Simulação automática de leituras;
-- Visualização das leituras;
+- Visualização das leituras em tabela;
 - Análise automática;
 - Histórico de alertas;
 - Relatório resumido;
-- Uso de listas, funções, condicionais e repetição.
+- Uso de listas, dicionários, funções, condicionais e repetição.

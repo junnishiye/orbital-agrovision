@@ -1,0 +1,19 @@
+Global Solution 2026.1
+Disciplina: Prompt and Artificial Intelligence
+
+Projeto:
+Orbital AgroVision — Mission Control AI
+
+Descrição:
+Sistema com inteligência artificial generativa para análise de dados simulados da missão Mission TerraGuard.
+A IA interpreta temperatura, comunicação, bateria, oxigênio, estabilidade, luminosidade, vibração e risco ambiental, gerando status da missão, alertas, análise operacional, recomendações e impacto sustentável.
+
+Integrantes:
+- João Vitor Jun Nishiye De Sousa — RM: 572079
+- Davi Sinhorini Pacheco — RM: 569487
+
+Link do repositório GitHub:
+https://github.com/junnishiye/orbital-agrovision
+
+Link do vídeo no YouTube:
+insira link aqui

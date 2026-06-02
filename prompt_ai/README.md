@@ -1,13 +1,11 @@
-prompt_ai/README.md
-````md
 # Orbital AgroVision — Mission Control AI
 
 ## Prompt and Artificial Intelligence
 
 ## Integrantes
 
-- João Vitor Jun Nishiye De Sousa — RM: 572079
-- Davi Sinhorini Pacheco — RM: 569487
+* João Vitor Jun Nishiye De Sousa — RM: 572079
+* Davi Sinhorini Pacheco — RM: 569487
 
 ---
 
@@ -27,18 +25,18 @@ O sistema utiliza um modelo de linguagem integrado ao código para analisar os d
 
 A IA recebe:
 
-- Dados simulados da missão;
-- Alertas lógicos gerados pelo sistema;
-- Contexto da Orbital AgroVision;
-- Regras de risco operacional e ambiental.
+* Dados simulados da missão;
+* Alertas lógicos gerados pelo sistema;
+* Contexto da Orbital AgroVision;
+* Regras de risco operacional e ambiental.
 
 Com isso, a IA gera:
 
-- Status da missão;
-- Principais alertas;
-- Análise operacional;
-- Recomendação de ações;
-- Impacto sustentável.
+* Status da missão;
+* Principais alertas;
+* Análise operacional;
+* Recomendação de ações;
+* Impacto sustentável.
 
 ---
 
@@ -48,7 +46,11 @@ O arquivo `system_prompt.txt` define o comportamento da IA.
 
 Ele instrui o modelo a atuar como o **Mission Control AI** da missão TerraGuard, analisando dados de uma missão espacial aplicada ao monitoramento agrícola sustentável.
 
-Arquivo: `prompt_ai/system_prompt.txt`
+Arquivo:
+
+```text
+prompt_ai/system_prompt.txt
+```
 
 ---
 
@@ -58,43 +60,43 @@ O notebook utiliza dados simulados da missão. Esses dados também estão dispon
 
 Variáveis analisadas:
 
-| Variável | Descrição |
-|---|---|
-| `temperatura` | Temperatura do módulo ou região monitorada |
-| `comunicacao` | Qualidade do sinal com a base |
-| `bateria` | Energia disponível no módulo |
-| `oxigenio` | Suporte operacional simulado |
-| `estabilidade` | Estabilidade geral da missão |
-| `luminosidade` | Potencial de geração solar ou luz captada |
-| `vibracao` | Nível de vibração ou impacto |
-| `risco_ambiental` | Índice de risco agrícola/ambiental |
+| Variável          | Descrição                                  |
+| ----------------- | ------------------------------------------ |
+| `temperatura`     | Temperatura do módulo ou região monitorada |
+| `comunicacao`     | Qualidade do sinal com a base              |
+| `bateria`         | Energia disponível no módulo               |
+| `oxigenio`        | Suporte operacional simulado               |
+| `estabilidade`    | Estabilidade geral da missão               |
+| `luminosidade`    | Potencial de geração solar ou luz captada  |
+| `vibracao`        | Nível de vibração ou impacto               |
+| `risco_ambiental` | Índice de risco agrícola/ambiental         |
 
 ---
 
 ## Regras de alerta
 
-| Condição | Alerta |
-|---|---|
-| Temperatura > 35 | Alerta de calor elevado |
-| Temperatura > 40 | Risco crítico ambiental |
-| Bateria < 50 | Atenção energética |
-| Bateria < 20 | Bateria crítica |
-| Comunicação < 60 | Comunicação instável |
-| Comunicação < 30 | Falha crítica de comunicação |
-| Oxigênio < 80 | Suporte operacional crítico |
-| Estabilidade < 40 | Instabilidade operacional crítica |
-| Vibração > 60 | Possível impacto ou falha mecânica |
+| Condição             | Alerta                                |
+| -------------------- | ------------------------------------- |
+| Temperatura > 35     | Alerta de calor elevado               |
+| Temperatura > 40     | Risco crítico ambiental               |
+| Bateria < 50         | Atenção energética                    |
+| Bateria < 20         | Bateria crítica                       |
+| Comunicação < 60     | Comunicação instável                  |
+| Comunicação < 30     | Falha crítica de comunicação          |
+| Oxigênio < 80        | Suporte operacional crítico           |
+| Estabilidade < 40    | Instabilidade operacional crítica     |
+| Vibração > 60        | Possível impacto ou falha mecânica    |
 | Risco ambiental > 70 | Área agrícola em risco ambiental alto |
 
 ---
 
 ## Arquivos da entrega
 
-- `README.md`
-- `entrega_prompt_ia.txt`
-- `exemplos_respostas.md`
-- `mission_control_ai_colab.ipynb`
-- `system_prompt.txt`
+* `README.md`
+* `entrega_prompt_ia.txt`
+* `exemplos_respostas.md`
+* `mission_control_ai_colab.ipynb`
+* `system_prompt.txt`
 
 ---
 
@@ -126,6 +128,7 @@ A chave de API não deve ser salva no GitHub.
 
 ### Análise de ciclo crítico
 
+```text
 ======================================================================
 ORBITAL AGROVISION — MISSION CONTROL AI
 ======================================================================
@@ -166,9 +169,11 @@ RECOMENDAÇÃO:
 
 IMPACTO SUSTENTÁVEL:
 As ações recomendadas visam proteger recursos essenciais, como energia e oxigênio, reduzindo desperdícios e garantindo a continuidade das operações. A mitigação do calor e a proteção das áreas agrícolas ajudam a preservar a biodiversidade e a saúde do solo, promovendo um agronegócio sustentável. A reavaliação da comunicação e da estabilidade contribui para a segurança da missão e a eficiência das operações, minimizando riscos futuros.
+```
 
 ### Análise de todos os ciclos
 
+```text
 ======================================================================
 ANÁLISE IA — CICLO 1
 ======================================================================
@@ -302,15 +307,17 @@ RECOMENDAÇÃO:
 
 IMPACTO SUSTENTÁVEL:
 As ações recomendadas visam garantir a continuidade da missão e a proteção dos recursos agrícolas. A recarga da bateria e a melhoria da comunicação ajudam a evitar desperdícios de energia e garantem uma resposta rápida a potenciais crises. A monitorização do risco ambiental é crucial para a proteção das culturas e a promoção de práticas agrícolas sustentáveis, assegurando que os recursos naturais sejam utilizados de forma eficiente e responsável.
-
-
-
+```
 
 ---
 
 ## Link do vídeo
 
+Adicione o link do vídeo demonstrativo aqui:
+
+```text
 insira link aqui
+```
 
 ---
 
@@ -319,3 +326,4 @@ insira link aqui
 A solução demonstra o uso de IA generativa integrada ao contexto da **Mission TerraGuard**.
 
 O sistema interpreta dados simulados, identifica riscos, gera alertas e recomenda ações, conectando inteligência artificial, sustentabilidade, monitoramento espacial e agronegócio sustentável.
+

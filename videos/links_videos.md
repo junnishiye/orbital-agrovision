@@ -6,3 +6,4 @@ Mostra monitoramento energético, bateria, luminosidade, potência solar, alerta
 
 Vídeo 3 — Prompt and AI
 Mostra Colab, system prompt, IA analisando ciclo crítico e resposta gerada.
+https://youtu.be/t1nKJgT40DQ

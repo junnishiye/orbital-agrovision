@@ -1,7 +1,7 @@
 # Orbital AgroVision — Mission TerraGuard
 # Data Structures and Algorithms
 # Sistema com interface gráfica para monitoramento de missão espacial
-
+import random
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -119,14 +119,24 @@ def inserir_leitura_manual():
 
 
 def simular_leitura_automatica():
-    cenarios_simulados = [
-        [29, 76, 1],
-        [45, 35, 1],
-        [82, 55, 1],
-        [91, 12, 0],
-        [34, 18, 1],
-        [67, 90, 0]
-    ]
+    temperatura = random.randint(20, 95)
+    energia = random.randint(10, 100)
+    comunicacao = random.choice([0, 1])
+
+    leitura = criar_leitura(temperatura, energia, comunicacao)
+    leituras.append(leitura)
+
+    atualizar_tabela()
+
+    messagebox.showinfo(
+        "Simulação automática",
+        f"Leitura simulada adicionada.\n"
+        f"Ciclo: {leitura['ciclo']}\n"
+        f"Temperatura: {temperatura} °C\n"
+        f"Energia: {energia}%\n"
+        f"Comunicação: {comunicacao}\n"
+        f"Status: {leitura['status']}"
+    )
 
     indice = len(leituras) % len(cenarios_simulados)
     temperatura, energia, comunicacao = cenarios_simulados[indice]

@@ -3,6 +3,7 @@ Mostra proposta da Orbital AgroVision, código Python, matriz, alertas e relató
 
 Vídeo 2 — Energias Renováveis
 Mostra monitoramento energético, bateria, luminosidade, potência solar, alertas e modo economia.
+https://youtu.be/UKjj653Jh_E
 
 Vídeo 3 — Prompt and AI
 Mostra Colab, system prompt, IA analisando ciclo crítico e resposta gerada.

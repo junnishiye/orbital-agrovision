@@ -1,5 +1,6 @@
 Vídeo 1 — Pitch geral / Pensamento Computacional
 Mostra proposta da Orbital AgroVision, código Python, matriz, alertas e relatório.
+https://youtu.be/0ZOaHWu8848
 
 Vídeo 2 — Energias Renováveis
 Mostra monitoramento energético, bateria, luminosidade, potência solar, alertas e modo economia.

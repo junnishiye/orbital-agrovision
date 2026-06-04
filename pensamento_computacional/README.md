@@ -105,5 +105,5 @@ O sistema exibirá no terminal:
 
 ## Link do vídeo
 
-insira link aqui
+https://youtu.be/0ZOaHWu8848
 
